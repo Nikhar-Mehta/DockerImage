@@ -1,14 +1,20 @@
 pipeline {
     agent any 
+	tools {
+		maven 'Maven'
+	}
     stages {       
-    stage('Checkout'){
+    stage('Initialize'){
             steps {
-                git(url: 'https://github.com/snehakokil/insecurebank.git', branch: 'master')
-                stash name:'Source', includes:'**/**'
-                stash name:'dockerfile', includes: '**/Dockerfile'
-                
+                sh '''
+			echo "PATH = $(PATH)"
+			echo "M2_HOME = $(M2_HOME)"
             }
-        }       
+        } 
+
+	stage ('Build') {
+    		sh 'mvn clean package'
+   	 }
  
         	
 		    } //stages
