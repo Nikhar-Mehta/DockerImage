@@ -18,11 +18,11 @@ pipeline {
                     
                 } 
             }
-            steps {
-                unstash 'Source'
-                sh 'mvn clean package' 
-                stash name:'WarFile', includes: '**/*.war' 
-            }            
+           // steps {
+           //     unstash 'Source'
+           //     sh 'mvn clean package' 
+            //    stash name:'WarFile', includes: '**/*.war' 
+          //  }            
         }
 		    } //stages
 }//pipeline
